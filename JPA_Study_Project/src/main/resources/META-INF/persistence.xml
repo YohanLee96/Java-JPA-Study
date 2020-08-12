@@ -11,7 +11,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.user_sql_comments" value="true"/>
             <property name="hibernate.id.new_generator_mappings" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>    <!--hibernate의 ddl기능 활성화-->
         </properties>
     </persistence-unit>
 </persistence>
