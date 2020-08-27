@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Getter @Setter
 @Entity
 @NoArgsConstructor
+@Table(name = "TEAM")
 public class Team {
 
     @Id
-    @GeneratedValue
     @Column(name = "TEAM_ID")
     private String id;
 
