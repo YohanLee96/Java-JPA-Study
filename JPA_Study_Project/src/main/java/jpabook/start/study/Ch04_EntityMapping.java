@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
+
 public class Ch04_EntityMapping {
 
     //엔티티 매니저 팩토리 생성.(수행 이후, 닫아줘야함.)

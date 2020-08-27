@@ -9,12 +9,12 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class Ch05_Relation {
-    //엔티티 매니저 팩토리 생성.(수행 이후, 닫아줘야함.)
+/**
+ * 단방향 연관관계 예제
+ */
+public class Ch05_Relation_1 {
     public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpabook");
-    //엔티티매니저 팩토리에서 엔티티 매니저 생성.(수행 이후, 닫아줘야함.)
     public static EntityManager manager = factory.createEntityManager();
-    //트랜잭션 획득
     public static EntityTransaction transaction = manager.getTransaction();
 
     public static void main(String[] args) {
