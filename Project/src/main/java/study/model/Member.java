@@ -1,4 +1,4 @@
-package jpabook.start.model;
+package study.model;
 
 
 import lombok.Getter;

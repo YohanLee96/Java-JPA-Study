@@ -1,6 +1,6 @@
-package jpabook.start.study;
+package study.exam;
 
-import jpabook.start.model.Member;
+import study.model.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Ch04_EntityMapping {
 
     //엔티티 매니저 팩토리 생성.(수행 이후, 닫아줘야함.)
-    public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpabook");
+    public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("study");
     //엔티티매니저 팩토리에서 엔티티 매니저 생성.(수행 이후, 닫아줘야함.)
     public static EntityManager manager = factory.createEntityManager();
     //트랜잭션 획득

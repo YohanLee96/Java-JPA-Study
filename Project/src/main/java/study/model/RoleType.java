@@ -1,4 +1,4 @@
-package jpabook.start.model;
+package study.model;
 
 public enum RoleType {
     ADMIN, USER

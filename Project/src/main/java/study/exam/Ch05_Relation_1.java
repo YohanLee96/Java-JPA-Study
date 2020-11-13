@@ -1,7 +1,7 @@
-package jpabook.start.study;
+package study.exam;
 
-import jpabook.start.model.Member;
-import jpabook.start.model.Team;
+import study.model.Member;
+import study.model.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,33 +13,33 @@ import java.util.List;
  * 단방향 연관관계 예제
  */
 public class Ch05_Relation_1 {
-    public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpabook");
-    public static EntityManager manager = factory.createEntityManager();
-    public static EntityTransaction transaction = manager.getTransaction();
+
 
     public static void main(String[] args) {
+        Common common = new Common();
+
+        EntityManager manager = common.getManager();
+        EntityTransaction transaction = manager.getTransaction();
 
         try{
             transaction.begin();
-            //testSave();
-            //searchObjectGraph();
-            //queryLogicJoin();
-            //updateRelation();
-            deleteRelation();
+            testSave(manager);
+            searchObjectGraph(manager);
+            queryLogicJoin(manager);
+            updateRelation(manager);
+            deleteRelation(manager);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
-        } finally {
-            manager.close();
         }
-        factory.close();
+        common.close();
     }
 
     /**
      * 연관관계 제거 로직
      */
-    private static void deleteRelation() {
+    private static void deleteRelation(EntityManager manager) {
         Member member = manager.find(Member.class, "member1");
         member.setTeam(null);
     }
@@ -48,7 +48,7 @@ public class Ch05_Relation_1 {
     /**
      * 연관관계를 통한 수정 로직
      */
-    private static void updateRelation() {
+    private static void updateRelation(EntityManager manager) {
         Team team2 = new Team("team2", "팀2");
         manager.persist(team2);
 
@@ -60,7 +60,7 @@ public class Ch05_Relation_1 {
     /**
      * JPQL을 이용한 조회.
      */
-    private static void queryLogicJoin() {
+    private static void queryLogicJoin(EntityManager manager) {
 
         String jpql = "select m from Member m join m.team t where " +"t.name=:teamName";
 
@@ -78,7 +78,7 @@ public class Ch05_Relation_1 {
     /**
      * 객체 그래프탐색
      */
-    private static void searchObjectGraph() {
+    private static void searchObjectGraph(EntityManager manager) {
         Member member = manager.find(Member.class, "member1");
         Team team = member.getTeam();   //객체 그래프 탐색
         System.out.println("팀 이름 : " + team.getName());
@@ -88,7 +88,7 @@ public class Ch05_Relation_1 {
     /**
      * 연관관계를 이용한 저장.
      */
-    private static void testSave() {
+    private static void testSave(EntityManager manager) {
         //팀 저장
         Team team1 = new Team("team1", "개발팀");
         manager.persist(team1); //영속성 처리

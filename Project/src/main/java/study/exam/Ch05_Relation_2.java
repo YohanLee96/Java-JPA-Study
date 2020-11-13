@@ -1,7 +1,7 @@
-package jpabook.start.study;
+package study.exam;
 
-import jpabook.start.model.Member;
-import jpabook.start.model.Team;
+import study.model.Member;
+import study.model.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,30 +13,31 @@ import java.util.List;
  * 양방향 연관관계 예제
  */
 public class Ch05_Relation_2 {
-    public static EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpabook");
-    public static EntityManager manager = factory.createEntityManager();
-    public static EntityTransaction transaction = manager.getTransaction();
 
     public static void main(String[] args) {
+        Common common = new Common();
+
+        EntityManager manager = common.getManager();
+        EntityTransaction transaction = manager.getTransaction();
+
         try{
             transaction.begin();
-            //biDirection();
-            //save();
-            nonOwnerSave();
+            //biDirection(manager);
+            //save(manager);
+            nonOwnerSave(manager);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
             transaction.rollback();
         }
 
-        manager.close();
-        factory.close();
+        common.close();
     }
 
     /**
      * 양방향 연관관계를 이용한 Member찾기.
      */
-    private static void biDirection() {
+    private static void biDirection(EntityManager manager) {
         Team team = manager.find(Team.class, "team1");
         List<Member> members = team.getMemberList();
 
@@ -48,7 +49,7 @@ public class Ch05_Relation_2 {
     /**
      * 양방향 연관관계를 이용한 데이터 저장
      */
-    private static void save() {
+    private static void save(EntityManager manager) {
         Team team1 = new Team("team1", "팀1");
         manager.persist(team1); //팀1 저장.
 
@@ -69,7 +70,7 @@ public class Ch05_Relation_2 {
     /**
      * 양방향 연관관계에서 연관관계의 주인이 아닌곳에서 저장을 했을 경우,
      */
-    private static void nonOwnerSave() {
+    private static void nonOwnerSave(EntityManager manager) {
         Member member1 = new Member("member1", "회원1");
         manager.persist(member1);
 

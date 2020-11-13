@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
-    <persistence-unit name="jpabook">
+    <persistence-unit name="study">
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.user" value="sa"/>
@@ -11,7 +11,7 @@
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.user_sql_comments" value="true"/>
             <property name="hibernate.id.new_generator_mappings" value="true"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>    <!--hibernate의 ddl기능 활성화-->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>    <!--hibernate의 ddl기능 활성화-->
         </properties>
     </persistence-unit>
 </persistence>
