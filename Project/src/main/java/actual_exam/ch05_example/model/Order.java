@@ -1,15 +1,19 @@
 package actual_exam.ch05_example.model;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Getter
 @Entity
 @Table(name = "ORDERS")
+@NoArgsConstructor
 public class Order {
 
     @Id @GeneratedValue
@@ -18,33 +22,39 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
-    private Member member;
+    private ShopMember shopMember;
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDate orderDate;
+    private Date orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    public void setMember(Member member) {
+    public void setMember(ShopMember shopMember) {
         //기존 연관관계 제거.
-        if(this.member != null) {
-            this.member.getOrders().remove(this);
+        if(this.shopMember != null) {
+            this.shopMember.getOrders().remove(this);
         }
 
-        this.member = member;
-        member.getOrders().add(this);
+        this.shopMember = shopMember;
+        shopMember.getOrders().add(this);
     }
 
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
+
+    @Builder
+    public Order(Long id, ShopMember shopMember, List<OrderItem> orderItems, Date orderDate, OrderStatus orderStatus) {
+        this.id = id;
+        this.shopMember = shopMember;
+        this.orderItems = orderItems;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
+    }
 }
 
-enum OrderStatus {
-    ORDER, CANCEL;
-}

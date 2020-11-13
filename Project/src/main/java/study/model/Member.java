@@ -35,12 +35,13 @@ public class Member {
      * 연관관계 편의 메소드
      */
     public void setTeam(Team team) {
-        //해당 분기를 안넣어주면 기존에 SET 했던 team에 Member정보가 아직 남아있다.
-        if(this.team != null) {
-            this.team.getMemberList().remove(this);
+        if (team != null) {
+            //해당 분기를 안넣어주면 기존에 SET 했던 team에 Member정보가 아직 남아있다.
+            if(this.team != null) {
+                this.team.getMemberList().remove(this);
+            }
+            this.team = team;
+            team.getMemberList().add(this); //객체를 고려한 양방향 연관관계 설정.
         }
-
-        this.team = team;
-        team.getMemberList().add(this); //객체를 고려한 양방향 연관관계 설정.
     }
 }

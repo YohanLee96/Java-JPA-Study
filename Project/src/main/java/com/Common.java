@@ -1,4 +1,4 @@
-package study.exam;
+package com;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,7 +19,6 @@ public class Common {
     }
 
     public  EntityManager getManager() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("study");
         return factory.createEntityManager();
     }
 
