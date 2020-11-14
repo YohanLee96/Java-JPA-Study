@@ -15,7 +15,6 @@ import javax.persistence.Id;
 public class Item {
 
     @Id
-    @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
 

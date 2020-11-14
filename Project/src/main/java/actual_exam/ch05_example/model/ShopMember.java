@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ShopMember {
 
-    @Id @GeneratedValue
+    @Id
     @Column(name = "MEMBER_ID")
     private Long id;
 

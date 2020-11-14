@@ -2,15 +2,17 @@ package actual_exam.ch05_example.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Getter
 @Entity
 @Table(name = "ORDER_ITEM")
+@NoArgsConstructor
 public class OrderItem {
 
-    @Id @GeneratedValue
+    @Id
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 

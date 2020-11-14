@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
     @Column(name = "ORDER_ID")
     private Long id;
 
