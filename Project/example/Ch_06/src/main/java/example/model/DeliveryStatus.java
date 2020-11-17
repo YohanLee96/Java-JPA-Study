@@ -1,4 +1,4 @@
-package model;
+package example.model;
 
 public enum DeliveryStatus {
     READY,

@@ -1,5 +1,6 @@
-package model;
+package example.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "CATEGORY")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Category {
 
     @Id

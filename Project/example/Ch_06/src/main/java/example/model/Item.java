@@ -1,5 +1,6 @@
-package model;
+package example.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,5 +33,11 @@ public class Item {
     @Column(name = "STOCK_QUANTITY")
     private int stockQuantity;
 
-
+    @Builder
+    public Item(List<Category> categories, String name, int price, int stockQuantity) {
+        this.categories = categories;
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 }
