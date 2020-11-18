@@ -1,5 +1,6 @@
 package example.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,9 +20,8 @@ public class OrderItem {
     @JoinColumn(name = "ORDER_ID")
     private Orders order;
 
-    @ManyToOne
-    @JoinColumn(name = "ITEM_ID")
-    private Item item;
+    @Column(name = "ITEM_ID")
+    private Long itemId;
 
 
     @Column(name = "ORDER_PRICE")
@@ -33,5 +33,12 @@ public class OrderItem {
 
     public void setOrder(Orders order) {
         this.order = order;
+    }
+
+    @Builder
+    public OrderItem(Long itemId, int orderPrice, int count) {
+        this.itemId = itemId;
+        this.orderPrice = orderPrice;
+        this.count = count;
     }
 }

@@ -22,7 +22,7 @@ public class Item {
             fetch = FetchType.LAZY,
             mappedBy = "item"
     )
-    private List<Category> categories = new ArrayList<>();
+    private List<CategoryItem> categories = new ArrayList<>();
 
     @Column(name = "NAME")
     private String name;
@@ -34,10 +34,17 @@ public class Item {
     private int stockQuantity;
 
     @Builder
-    public Item(List<Category> categories, String name, int price, int stockQuantity) {
-        this.categories = categories;
+    public Item(String name, int price, int stockQuantity) {
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
+
+    public void addCategory(CategoryItem category) {
+        if(!this.categories.contains(category)) {
+            this.categories.add(category);
+        }
+    }
+
+
 }

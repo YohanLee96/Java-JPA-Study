@@ -1,5 +1,6 @@
 package example.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -63,5 +64,12 @@ public class Orders {
     public void setDelivery(Delivery delivery) {
         this.delivery = delivery;
         this.delivery.setOrders(this);
+    }
+
+    @Builder
+    public Orders(Member member, Date orderDate, OrderStatus orderStatus) {
+        this.member = member;
+        this.orderDate = orderDate;
+        this.orderStatus = orderStatus;
     }
 }

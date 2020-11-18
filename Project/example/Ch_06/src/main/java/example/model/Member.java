@@ -1,5 +1,6 @@
 package example.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,5 +33,11 @@ public class Member {
     private String zipCode;
 
 
-
+    @Builder
+    public Member(String memberId, List<Orders> orders, String city, String street, String zipCode) {
+        this.memberId = memberId;
+        this.city = city;
+        this.street = street;
+        this.zipCode = zipCode;
+    }
 }

@@ -1,5 +1,6 @@
 package example.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -36,4 +37,21 @@ public class Delivery {
     public void setOrders(Orders order) {
         this.order = order;
     }
+
+    @Builder
+    public Delivery(Orders order, String city, String street, String zipCode, DeliveryStatus status) {
+        this.order = order;
+        this.city = city;
+        this.street = street;
+        this.zipCode = zipCode;
+        this.status = status;
+    }
+
+    public Delivery(Member member) {
+        this.status = DeliveryStatus.READY;
+        this.city = member.getCity();
+        this.street = member.getStreet();
+        this.zipCode = member.getZipCode();
+    }
+
 }
