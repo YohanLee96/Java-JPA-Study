@@ -17,9 +17,11 @@ public class Application {
 
     public static void main(String[] args) {
         //Idclass_identification_relation();
-        EmbeddedId_identification_relation();
+        //EmbeddedId_identification_relation();
         try {
             transaction.begin();
+
+
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
